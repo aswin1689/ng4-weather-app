@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <h2>5 day forecast</h2>
+  <hr>
+  <form [formGroup]="forecastForm" (ngSubmit)="onSubmit()" #cityForm="ngForm">
+    <div class="input-group input-group-lg offset-md-2 col-8">
+        <input type="text" formControlName="forecastCity" #forecastInput class="form-control" placeholder="Search by city name">
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit" [disabled]="!forecastInput.value.length">Go!</button>
+        </span>
+      </div>
+      <span class="text-danger" *ngIf="httpFailed">Unable to retrieve data for the city name you entered.</span>
+  </form>
+  <div class="row forecastContainer">
+    <div *ngFor="let day of cityForecast" class="forecastItem text-center">
+      <h2>{{day.day | date:'MMM d'}}</h2>
+      <p>{{day.weatherKind}}</p>
+      <img src="http://weather.omgez911.com/icons/{{day.icon}}.png" alt="Weather Icon" class="weatherIcon">
+      <h5>Max: {{day.tempMax | round}}&deg;F</h5>
+      <h5>Min: {{day.tempMin | round}}&deg;F</h5>
+    </div>
+  </div>
+</div>
+
