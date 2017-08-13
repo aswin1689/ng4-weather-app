@@ -1,0 +1,50 @@
+<div class="card" *ngIf="weatherData">
+  <div class="card-block">
+    <h3>{{weatherData.name}}</h3>
+    <span>{{weatherData.weather[0].main}}</span>
+    <br>
+    <img class="weatherIcon" src="../../assets/images/{{weatherData.weather[0].icon}}.png" alt="">
+    <h2 class="currentTemp">{{weatherData.main.temp | round}}&deg;F</h2>
+    <div class="row">
+      <div class="col text-right">
+        Description :
+      </div>
+      <div class="col text-left">
+        {{weatherData.weather[0].description}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-right">
+         Max :
+      </div>
+      <div class="col text-left">
+        {{weatherData.main.temp_max | round}}&deg;F
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-right">
+         Min :
+      </div>
+      <div class="col text-left">
+        {{weatherData.main.temp_min | round}}&deg;F
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-right">
+         Humidity :
+      </div>
+      <div class="col text-left">
+         {{weatherData.main.humidity}}%
+      </div>
+    </div>
+    <div>
+    <div class="row">
+      <div class="col text-right">
+          Wind :
+      </div>
+      <div class="col text-left">
+         {{weatherData.wind.speed}} mph
+      </div>
+    </div>
+  </div>
+</div>

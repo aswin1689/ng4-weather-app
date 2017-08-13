@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit(currentWeatherInput.value)" #cityForm="ngForm" role="form"  autocomplete="off">
+  <div class="form-group">
+  <div class="input-group input-group-lg">
+    <input type="text" name="city" #currentWeatherInput="ngModel" class="form-control" [(ngModel)]="cityName" placeholder="Search by city name" name="cityName" required>
+    <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit" [disabled]="!cityForm.form.valid">Go!</button>
+        </span>
+  </div>
+      <div *ngIf="currentWeatherInput.errors && (currentWeatherInput.dirty || currentWeatherInput.touched)" class="text-danger">
+          <div [hidden]="!currentWeatherInput.errors.required">
+            Please enter a valid city.
+          </div>
+        </div>
+  </div>
+</form>

@@ -1,28 +1,12 @@
-<div class="container">
-  <h2>Current Weather</h2>
+<div class="container-fluid">
+  <h3 class="pageTitle">Current Weather</h3>
   <hr>
-  <div class="offset-md-2 col-8">
-    <form (ngSubmit)="onSubmit(currenWeatherForm)" #currenWeatherForm="ngForm" >
-      <div class="input-group input-group-lg">
-        <input type="text" ngModel name="city" #currentWeatherInput class="form-control" placeholder="Search by city name">
-        <span class="input-group-btn">
-          <button class="btn btn-primary" type="submit" [disabled]="!currentWeatherInput.value.length">Go!</button>
-        </span>
-      </div>
-      <span class="text-danger" *ngIf="httpFailed">Unable to retrieve data for the city name you entered.</span>
-    </form>
-    <div class="card" *ngIf="currentWeather">
-      <div class="card-block">
-        <h2>{{currentWeather.cityName}}</h2>
-        <p>{{currentWeather.weatherKind}}</p>
-        
-        <img class="weatherIcon" src="http://weather.omgez911.com/icons/{{currentWeather.icon}}.png" alt="">
-        <h2 class="currentTemp">{{currentWeather.temperature | round}}&deg;F</h2>
-        <div>
-          Max: {{currentWeather.maxTemp | round}}&deg;F &nbsp;&nbsp;
-          Min: {{currentWeather.minTemp | round}}&deg;F
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+      <app-input-search (sendWeatherData)="handleWeatherData($event)"></app-input-search>
+      <span class="text-danger" *ngIf="httpFailed">Unable to retrieve data for the city you entered.</span>
+      <button class="btn btn-link" (click)="getLocalWeather()">Use my current location</button>
+      <app-weather-card [weatherData]="weatherData"></app-weather-card>
     </div>
   </div>
 </div>

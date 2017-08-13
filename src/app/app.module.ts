@@ -11,6 +11,9 @@ import { ForecastComponent } from './forecast/forecast.component';
 import { appRoutes } from './app.routes';
 import { WeatherService } from './weather.service';
 import { RoundPipe } from './round.pipe';
+import { CapitalizePipe } from './capitalize.pipe';
+import { InputSearchComponent } from './input-search/input-search.component';
+import { WeatherCardComponent } from './weather-card/weather-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { RoundPipe } from './round.pipe';
     HeaderComponent,
     CurrentComponent,
     ForecastComponent,
-    RoundPipe
+    RoundPipe,
+    CapitalizePipe,
+    InputSearchComponent,
+    WeatherCardComponent
   ],
   imports: [
     BrowserModule,
