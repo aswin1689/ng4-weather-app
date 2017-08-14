@@ -8,17 +8,23 @@ import { WeatherService } from '../weather.service';
   styleUrls: ['./input-search.component.less']
 })
 export class InputSearchComponent {
-  weatherData;
   cityName:string = this.weatherService.cityName;
+  httpFailed:boolean = false;
+  httpErrorMessage:string;
   @Output() sendWeatherData = new EventEmitter();
-
 
   constructor(private weatherService:WeatherService) { }
 
   onSubmit(value:any){
-    this.weatherService.getWeather(value).subscribe((data) => {
-    this.sendWeatherData.emit(data);
-    });
+    this.weatherService.getWeather(value).subscribe(
+      (data) => {
+        this.httpFailed = false;
+        this.sendWeatherData.emit(data);
+      }, 
+      (error) => {
+        this.httpErrorMessage = error.message;
+        this.httpFailed = true;
+      });
   }
 
 }

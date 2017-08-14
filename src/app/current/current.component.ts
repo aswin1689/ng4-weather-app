@@ -8,9 +8,10 @@ import { WeatherService } from '../weather.service';
   styleUrls: ['./current.component.less']
 })
 export class CurrentComponent implements OnInit{
-  location;
-  httpFailed: boolean = false;
-  weatherData;
+  location:any;
+  httpFailed:boolean = false;
+  httpErrorMessage:string;
+  weatherData:any;
 
   constructor(private weatherService:WeatherService) { }
 
@@ -31,7 +32,8 @@ export class CurrentComponent implements OnInit{
         (data) => {
           this.weatherData = data;
           this.httpFailed = false;
-        }, (error) => {
+        }, error => {
+          this.httpErrorMessage = error.message;
           this.httpFailed = true;
         }
       );

@@ -1,3 +1,16 @@
+/*Variables*/
+@blue-color: #004085;
+@medium-grey: #ccc;
+
+/**Mixin for flex vendor prefixes**/
+.flex-mixin() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
 .container-fluid {
   font-family: 'Roboto', sans-serif;
   margin: 30px;
@@ -5,14 +18,6 @@
 
 .pageTitle{
   font-weight: 300;
-}
-
-.flex-mixin() {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
 }
 
 .forecastContainer{
@@ -25,7 +30,7 @@
 
 .forecastItem{
   text-align: center;
-  border: 1px solid #ccc;
+  border: 1px solid @medium-grey;
   border-radius: 15px;
   padding: 10px;
   margin: 4px;
@@ -37,3 +42,15 @@
   width: 100px;
 }
 
+.alert-primary {
+    color: @blue-color;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+
+.alert {
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
