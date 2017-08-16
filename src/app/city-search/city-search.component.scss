@@ -1,0 +1,21 @@
+/*Variables*/
+$red: #e74c3c;
+$medium-grey: #ccc;
+
+.error-message {
+  color: $red;
+  font-weight: bold;
+}
+
+.icon {
+  position: relative;
+  top: 7px;
+}
+
+.regular-icon {
+  color: $medium-grey;
+}
+
+.error-icon {
+  color: $red;
+}

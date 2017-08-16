@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { CurrentComponent } from './current/current.component';
-import { ForecastComponent } from './forecast/forecast.component';
+import { AppComponent } from './app.component';
 
 export const appRoutes:Routes = [
     {
@@ -11,11 +10,7 @@ export const appRoutes:Routes = [
     },
     {
         path: 'weather',
-        component: CurrentComponent
-    },
-    {
-        path: 'forecast',
-        component: ForecastComponent
+        component: AppComponent
     },
     { 
         path: '**', 

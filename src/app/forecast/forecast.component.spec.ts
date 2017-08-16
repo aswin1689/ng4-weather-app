@@ -1,10 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
 
-import { RoundPipe } from '../round.pipe';
+import { RoundPipe } from '../shared/round.pipe';
 import { ForecastComponent } from './forecast.component';
-import { WeatherService } from '../weather.service';
+import { WeatherService } from '../shared/weather.service';
 
 class MockWeatherService {
   getForecast(cityName) {
@@ -52,7 +53,7 @@ describe('ForecastComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, HttpModule ],
+      imports: [ FormsModule, HttpModule, MaterialModule ],
       providers: [ WeatherService ],
       declarations: [ ForecastComponent, RoundPipe ]
     })

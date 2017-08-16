@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class Ng2weatherAppPage {
+export class NgMaterialAppPage {
   navigateTo() {
     return browser.get('/');
   }

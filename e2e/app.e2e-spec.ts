@@ -1,10 +1,10 @@
-import { Ng2weatherAppPage } from './app.po';
+import { NgMaterialAppPage } from './app.po';
 
-describe('ng2weather-app App', () => {
-  let page: Ng2weatherAppPage;
+describe('ng-material-app App', () => {
+  let page: NgMaterialAppPage;
 
   beforeEach(() => {
-    page = new Ng2weatherAppPage();
+    page = new NgMaterialAppPage();
   });
 
   it('should display welcome message', () => {

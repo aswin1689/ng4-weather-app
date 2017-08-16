@@ -1,0 +1,24 @@
+<form (ngSubmit)="onSubmit(currentWeatherInput.value)" #cityForm="ngForm" role="form" autocomplete="off" >
+  <md-icon class="icon regular-icon">search</md-icon>
+  <md-input-container>
+    <input mdInput placeholder="City name" #currentWeatherInput [formControl]="cityInput" [(ngModel)]="city">
+    <md-hint>e.g., Atlanta</md-hint>
+    <md-error *ngIf="cityInput.hasError('pattern')">
+      Please enter alphabets only.
+    </md-error>
+    <md-error *ngIf="cityInput.hasError('required')">
+        City is <strong>required</strong>.
+      </md-error>
+  </md-input-container>
+  <button md-raised-button color="primary" type="submit" [disabled]="!cityForm.form.valid">
+      Go!
+    </button>
+  <button md-icon-button (click)="getLocalWeather()" mdTooltip="Use my location">
+    <md-icon color="primary">my_location</md-icon>
+  </button>
+  <br>
+  <span class="error-message" *ngIf="httpFailed">
+    <md-icon class="icon">error</md-icon>
+    {{httpErrorMessage}}. Sorry about that!
+  </span>
+</form>

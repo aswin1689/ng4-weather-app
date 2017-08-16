@@ -1,17 +1,19 @@
-<div class="container-fluid">
-  <div class="alert alert-primary" role="alert" *ngIf="!cityName">
-    Please enter a city first.
-  </div>
-  <h4>{{cityName}}</h4>
-  <div class="row forecastContainer" *ngIf="cityName">
-    <div *ngFor="let day of cityForecast" class="forecastItem text-center">
-      <h3>{{day.day | date:'MMM d'}}</h3>
-      <p>{{day.weatherKind}}</p>
-      <img src="../../assets/images/{{day.icon}}.png" alt="Weather Icon" class="weatherIcon">
-      <h5>Max: {{day.tempMax | round}}&deg;F</h5>
-      <h5>Min: {{day.tempMin | round}}&deg;F</h5>
-    </div>
-  </div>
-
-</div>
-
+<md-list *ngIf="weatherData">
+  <h4 class="page-title">5 day forecast - {{weatherData.name}}</h4>
+  <md-list-item class="row list-header">
+    <div class="col-xs-2 col-sm-2">Date</div>
+    <div class="col-xs-2 col-sm-2"></div>
+    <div class="col-xs-3 col-sm-2">Description</div>
+    <div class="col-xs-3 col-sm-2">Max</div>
+    <div class="col-xs-2 col-sm-2">Min</div>
+    <div class="hidden-xs col-sm-2">Humidity</div>
+  </md-list-item>
+  <md-list-item *ngFor="let day of cityForecast" class="row">
+    <div class="col-xs-2 col-sm-2">{{day.dt_txt | date:'MMM d'}}</div>
+    <div class="col-xs-2 col-sm-2"><img src="../../assets/images/{{day.weather[0].icon}}.png" alt="Weather Icon" class="weather-icon"></div>
+    <div class="col-xs-3 col-sm-2">{{day.weather[0].description}}</div>
+    <div class="col-xs-3 col-sm-2">{{day.main.temp_max | round}}&deg; F</div>
+    <div class="col-xs-2 col-sm-2">{{day.main.temp_min | round}}&deg; F</div>
+    <div class="hidden-xs col-sm-2">{{day.main.humidity}}%</div>
+  </md-list-item>
+</md-list>

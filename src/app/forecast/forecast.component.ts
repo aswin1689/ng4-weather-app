@@ -1,40 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import 'rxjs/Rx';
+import { Component, OnChanges, Input } from '@angular/core';
 
-import { Forecast } from '../forecast';
-import { WeatherService } from '../weather.service';
+import { Forecast } from '../shared/forecast.model';
+import { WeatherService } from '../shared/weather.service';
 
 @Component({
-  selector: 'app-forecast',
+  selector: 'wa-forecast',
   templateUrl: './forecast.component.html',
-  styleUrls: ['./forecast.component.less']
+  styleUrls: ['./forecast.component.scss']
 })
-export class ForecastComponent implements OnInit {
+export class ForecastComponent implements OnChanges {
 
-  cityName: string = this.weatherService.cityName;
+  @Input() weatherData: any = {};
   cityForecast: Forecast[] = [];
   httpFailed: boolean = false;
 
   constructor(private weatherService:WeatherService) { }
 
-  ngOnInit() {
-    if(this.weatherService.cityName != ''){
-      this.getForecast(this.cityName);
+  ngOnChanges(changes: any){
+    if(changes.weatherData.currentValue.name){
+      this.getForecast(changes.weatherData.currentValue.name);
     }
   }
 
-  getForecast(city){
+  getForecast(city): void{
     this.cityForecast.length = 0;
-    this.weatherService.fiveDayForecast(city).subscribe(
+    this.weatherService.getFiveDayForecast(city).subscribe(
       (data) => {
         this.httpFailed = false;
-        this.cityName = this.weatherService.cityName;
+        this.cityForecast.length = 0;
         for(let i=0, arrLen=data.list.length; i<arrLen; i+=8){
-          const tempVal = new Forecast(data.list[i].dt_txt,
-                                      data.list[i].weather[0].icon,
-                                      data.list[i].weather[0].description,
-                                      data.list[i].main.temp_max,
-                                      data.list[i].main.temp_min)
+          const tempVal = data.list[i];
           this.cityForecast.push(tempVal);
         }
       },
