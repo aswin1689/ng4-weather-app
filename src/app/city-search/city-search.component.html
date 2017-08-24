@@ -1,5 +1,5 @@
 <form (ngSubmit)="onSubmit(currentWeatherInput.value)" #cityForm="ngForm" role="form" autocomplete="off" >
-  <md-icon class="icon regular-icon">search</md-icon>
+  <md-icon class="icon regular-icon hidden-xs">search</md-icon>
   <md-input-container>
     <input mdInput placeholder="City name" #currentWeatherInput [formControl]="cityInput" [(ngModel)]="city">
     <md-hint>e.g., Atlanta</md-hint>
@@ -10,7 +10,7 @@
         City is <strong>required</strong>.
       </md-error>
   </md-input-container>
-  <button md-raised-button color="primary" type="submit" [disabled]="!cityForm.form.valid">
+  <button md-raised-button color="primary" class="btn-go" type="submit" [disabled]="!cityForm.form.valid">
       Go!
     </button>
   <button md-icon-button (click)="getLocalWeather()" mdTooltip="Use my location">

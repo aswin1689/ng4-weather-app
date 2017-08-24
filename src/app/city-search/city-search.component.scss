@@ -19,3 +19,13 @@ $medium-grey: #ccc;
 .error-icon {
   color: $red;
 }
+
+md-input-container {
+  font-size: 1.5em;
+}
+
+@media(max-width:767px) {
+  md-input-container {
+    font-size: 1em;
+  }
+}

@@ -4,12 +4,12 @@
 </md-toolbar>
 <div class="container-fluid">
   <wa-city-search class="text-center city-search" (sendWeatherData)="handleWeatherData($event)"></wa-city-search>
-  <md-tab-group>
+  <md-tab-group *ngIf="weatherData">
     <md-tab label="Now">
       <wa-weather-card [weatherData]="weatherData"></wa-weather-card>
     </md-tab>
     <md-tab label="Forecast">
-      <wa-forecast *ngIf="weatherData" [weatherData]="weatherData"></wa-forecast>
+      <wa-forecast [weatherData]="weatherData"></wa-forecast>
     </md-tab>
   </md-tab-group>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnChanges, Input } from '@angular/core';
 
-import { Forecast } from '../shared/forecast.model';
+import { DayForecast } from '../shared/forecast.model';
 import { WeatherService } from '../shared/weather.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { WeatherService } from '../shared/weather.service';
 export class ForecastComponent implements OnChanges {
 
   @Input() weatherData: any = {};
-  cityForecast: Forecast[] = [];
+  cityForecast: DayForecast[] = [];
   httpFailed: boolean = false;
 
   constructor(private weatherService:WeatherService) { }

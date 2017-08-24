@@ -6,6 +6,7 @@ import 'hammerjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/Router';
 import { HttpModule } from '@angular/http';
+import {} from '@types/googlemaps';
 
 import { AppComponent } from './app.component';
 import { ForecastComponent } from './forecast/forecast.component';

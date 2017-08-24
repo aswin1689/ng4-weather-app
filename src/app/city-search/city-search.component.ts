@@ -11,9 +11,9 @@ const CITY_REGEX = /^[A-z ]+$/;
   styleUrls: ['./city-search.component.scss']
 })
 export class CitySearchComponent {
-  city:string = '';
-  httpFailed:boolean = false;
-  httpErrorMessage:string;
+  city: string = '';
+  httpFailed: boolean = false;
+  httpErrorMessage: string = '';
   location: any;
   @Output() sendWeatherData = new EventEmitter();
 
